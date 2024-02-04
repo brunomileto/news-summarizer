@@ -6,8 +6,8 @@ class Summarizer:
     def __init__(self) -> None:
         self.chat = ChatOpenAI(model_name='gpt-4-0125-preview', temperature=0)
 
-    def summarize(self, article_title, article_text, template):
+    def summarize(self, article_title, article_text, template, language):
         prompt = template.format(
-            article_title=article_title, article_text=article_text, template=template)
+            article_title=article_title, article_text=article_text, template=template, language=language)
         summary = self.chat.invoke([HumanMessage(content=prompt)]).content
         return summary
