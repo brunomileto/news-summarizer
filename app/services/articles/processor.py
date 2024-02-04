@@ -40,6 +40,7 @@ class ArticleProcessor:
         for url in latest_articles_urls:
             try:
                 if (not self.__article_repository.article_exists(url)):
+                    print(f"url to process: {url}")
                     article = self.__process_article(url)
                     article_model = ArticleModelMapper.toModel(article)
                     article_model.summary = self.__summarizer.summarize(

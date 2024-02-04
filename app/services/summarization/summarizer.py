@@ -20,9 +20,11 @@ class Summarizer:
             template=template
         )
         if (SETTINGS.SUMMARIZE):
+            print("ENV is set to summarize")
             summary = self.chat.invoke([HumanMessage(content=prompt)]).content
             return summary
         else:
+            print("ENV is set to NOT summarize")
             return ''
 
     def __get_template(self) -> str:
